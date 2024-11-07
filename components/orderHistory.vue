@@ -28,7 +28,7 @@ export default {
         const fetchOrders = async () => {
             loading.value = true;
             try {
-                const response = await axios.get('http://localhost:5000/orders', { withCredentials: true });
+                const response = await axios.get('https://nuxtjs-backend.onrender.com/orders', { withCredentials: true });
                 orders.value = response.data.reverse();
                 loading.value = false;
             } catch (err) {

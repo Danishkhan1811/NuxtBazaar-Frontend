@@ -52,7 +52,7 @@ export default {
         const fetchCartItems = async () => {
             loading.value = true;
             try {
-                const response = await axios.get('http://localhost:5000/cart', { withCredentials: true });
+                const response = await axios.get('https://nuxtjs-backend.onrender.com/cart', { withCredentials: true });
                 cartItems.value = response.data;
                 loading.value = false;
             } catch (err) {
@@ -63,7 +63,7 @@ export default {
 
         const decrementFromCart = async (productId) => {
             try {
-                await axios.put(`http://localhost:5000/cart/${productId}`, {}, { withCredentials: true });
+                await axios.put(`https://nuxtjs-backend.onrender.com/cart/${productId}`, {}, { withCredentials: true });
                 const item = cartItems.value.find(item => item.product._id === productId);
                 if (item.quantity > 1) {
                     item.quantity -= 1;
@@ -78,7 +78,7 @@ export default {
 
         const confirmOrder = async () => {
             try {
-                const response = await axios.post('http://localhost:5000/order', {}, { withCredentials: true });
+                const response = await axios.post('https://nuxtjs-backend.onrender.com/order', {}, { withCredentials: true });
                 alert('Order confirmed!');
                 cartItems.value = []; // Clear the cart after order confirmation
             } catch (err) {
@@ -288,7 +288,7 @@ export default {
         const fetchCartItems = async () => {
             loading.value = true;
             try {
-                const response = await axios.get('http://localhost:5000/cart', { withCredentials: true });
+                const response = await axios.get('https://nuxtjs-backend.onrender.com/cart', { withCredentials: true });
                 cartItems.value = response.data;
                 loading.value = false;
             } catch (err) {
@@ -299,7 +299,7 @@ export default {
 
         const removeFromCart = async (productId) => {
             try {
-                await axios.delete(`http://localhost:5000/cart/${productId}`, { withCredentials: true });
+                await axios.delete(`https://nuxtjs-backend.onrender.com/cart/${productId}`, { withCredentials: true });
                 cartItems.value = cartItems.value.filter(item => item.product._id !== productId);
                 alert('Product removed from cart');
             } catch (err) {

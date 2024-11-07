@@ -44,7 +44,7 @@ export default {
         onMounted(async () => {
             loading.value = true;
             try {
-                const response = await axios.get('http://localhost:5000/wishlist', { withCredentials: true });
+                const response = await axios.get('https://nuxtjs-backend.onrender.com/wishlist', { withCredentials: true });
                 wishlist.value = response.data;
                 loading.value = false;
             } catch (err) {
@@ -60,7 +60,7 @@ export default {
 
         const removeFromWishlist = async (productId) => {
             try {
-                await axios.delete(`http://localhost:5000/wishlist/${productId}`, { withCredentials: true });
+                await axios.delete(`https://nuxtjs-backend.onrender.com/wishlist/${productId}`, { withCredentials: true });
                 wishlist.value = wishlist.value.filter(product => product._id !== productId);
                 alert('Product removed from wishlist');
             } catch (err) {

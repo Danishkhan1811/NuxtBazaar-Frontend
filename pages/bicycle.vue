@@ -42,11 +42,11 @@ export default {
         onMounted(async () => {
             loading.value = true;
             try {
-                const response = await axios.get('http://localhost:5000/products');
+                const response = await axios.get('https://nuxtjs-backend.onrender.com/products');
                 products.value = response.data;
 
                 // Fetch wishlist
-                const wishlistResponse = await axios.get('http://localhost:5000/wishlist', { withCredentials: true });
+                const wishlistResponse = await axios.get('https://nuxtjs-backend.onrender.com/wishlist', { withCredentials: true });
                 wishlist.value = wishlistResponse.data;
 
                 loading.value = false;
@@ -82,7 +82,7 @@ export default {
             }
 
             try {
-                await axios.post(`http://localhost:5000/wishlist/${productId}`, {}, { withCredentials: true });
+                await axios.post(`https://nuxtjs-backend.onrender.com/wishlist/${productId}`, {}, { withCredentials: true });
                 wishlist.value.push(products.value.find(product => product._id === productId));
                 alert('Product added to wishlist');
             } catch (err) {
@@ -94,7 +94,7 @@ export default {
         const addToCart = async (productId) => {
             try {
                 const quantity = 1; // You can customize this as needed
-                await axios.post(`http://localhost:5000/cart/${productId}`, { quantity }, { withCredentials: true });
+                await axios.post(`https://nuxtjs-backend.onrender.com/cart/${productId}`, { quantity }, { withCredentials: true });
                 alert('Product added to cart');
             } catch (err) {
                 alert('Failed to add product to cart');

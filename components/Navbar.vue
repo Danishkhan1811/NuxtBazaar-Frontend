@@ -65,7 +65,7 @@ export default {
 
         onMounted(async () => {
             try {
-                const response = await fetch('http://localhost:5000/profile', {
+                const response = await fetch('https://nuxtjs-backend.onrender.com/profile', {
                     method: 'GET',
                     credentials: 'include'
                 });
@@ -84,7 +84,7 @@ export default {
 
         async function logOut() {
             try {
-                const response = await fetch('http://localhost:5000/logout', {
+                const response = await fetch('https://nuxtjs-backend.onrender.com/logout', {
                     method: 'POST',
                     credentials: 'include'
                 });

@@ -79,7 +79,7 @@ export default {
         const fetchProductDetails = async () => {
             const productId = route.query.id;
             try {
-                const response = await axios.get(`http://localhost:5000/products/${productId}`);
+                const response = await axios.get(`https://nuxtjs-backend.onrender.com/products/${productId}`);
                 product.value = response.data;
                 fetchRelatedProducts();
                 fetchWishlist(); // Fetch wishlist after getting the product details
@@ -89,7 +89,7 @@ export default {
         };
 
         const fetchRelatedProducts = async () => {
-            const response = await axios.get('http://localhost:5000/products');
+            const response = await axios.get('https://nuxtjs-backend.onrender.com/products');
             suggestions.value = response.data;
             filterSuggestions();
         };
@@ -103,7 +103,7 @@ export default {
 
         const fetchWishlist = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/wishlist', { withCredentials: true });
+                const response = await axios.get('https://nuxtjs-backend.onrender.com/wishlist', { withCredentials: true });
                 wishlist.value = response.data;
             } catch (error) {
                 console.error("Error fetching wishlist:", error);
@@ -121,7 +121,7 @@ export default {
             }
 
             try {
-                await axios.post(`http://localhost:5000/wishlist/${productId}`, {}, { withCredentials: true });
+                await axios.post(`https://nuxtjs-backend.onrender.com/wishlist/${productId}`, {}, { withCredentials: true });
                 wishlist.value.push(product.value); // Assuming the product is already available
                 alert('Product added to wishlist');
             } catch (err) {

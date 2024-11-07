@@ -20,7 +20,7 @@ export default {
 
         const fetchUser = async () => {
             try {
-                const response = await fetch('http://localhost:5000/profile', {
+                const response = await fetch('https://nuxtjs-backend.onrender.com/profile', {
                     credentials: 'include' // Ensure cookies are sent with the request
                 });
 

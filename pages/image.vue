@@ -28,13 +28,13 @@
         const formData = new FormData();
         formData.append('image', file.value);
         try {
-          const response = await axios.post(`http://localhost:5000/upload/${product.value._id}`, formData, {
+          const response = await axios.post(`https://nuxtjs-backend.onrender.com/upload/${product.value._id}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           });
           alert('Image uploaded successfully');
-          product.value.image = (await axios.get(`http://localhost:5000/products/${product.value._id}`)).data.image;
+          product.value.image = (await axios.get(`https://nuxtjs-backend.onrender.com/products/${product.value._id}`)).data.image;
         } catch (error) {
           alert('Failed to upload image');
         }
